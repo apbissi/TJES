@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Atendimento</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #007bff; color: white; }
+    select { width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>Sistema de Atendimento</h1>
+  <table id="tabela">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Senha</th>
+        <th>Processo</th>
+        <th>Situação</th>
+        <th>Dias em Aberto</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    const atendimentos = [
+      { data: "2025-07-01", senha: "A001", processo: "1234567.89-1234.8.08.0012", situacao: "Pendente" },
+      { data: "2025-07-02", senha: "A002", processo: "1234567.89-1235.8.08.0012", situacao: "Em Análise" }
+    ];
+
+    function calcularDias(data) {
+      const hoje = new Date();
+      const inicio = new Date(data);
+      const diff = hoje - inicio;
+      return Math.floor(diff / (1000 * 60 * 60 * 24));
+    }
+
+    function renderTabela() {
+      const tbody = document.querySelector("#tabela tbody");
+      tbody.innerHTML = "";
+      atendimentos.forEach((at, i) => {
+        const tr = document.createElement("tr");
+        const dias = at.situacao === "Feito" ? 0 : calcularDias(at.data);
+        tr.innerHTML = `
+          <td>${at.data}</td>
+          <td>${at.senha}</td>
+          <td>${at.processo}</td>
+          <td>
+            <select onchange="alterarSituacao(${i}, this.value)">
+              <option${at.situacao === "Feito" ? " selected" : ""}>Feito</option>
+              <option${at.situacao === "Pendente" ? " selected" : ""}>Pendente</option>
+              <option${at.situacao === "Em Análise" ? " selected" : ""}>Em Análise</option>
+              <option${at.situacao === "Fila" ? " selected" : ""}>Fila</option>
+              <option${at.situacao === "Urgente" ? " selected" : ""}>Urgente</option>
+            </select>
+          </td>
+          <td>${dias}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function alterarSituacao(index, nova) {
+      atendimentos[index].situacao = nova;
+      renderTabela();
+    }
+
+    renderTabela();
+  </script>
+</body>
+</html>
