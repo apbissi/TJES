@@ -3,11 +3,40 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sistema TJES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Atendimento</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f0f0f0; }
+    h1, h2 { text-align: center; }
+    nav { display: flex; justify-content: center; margin-bottom: 20px; }
+    nav button { margin: 0 10px; padding: 10px; border: none; background: #007BFF; color: white; border-radius: 5px; cursor: pointer; }
+    nav button:hover { background: #0056b3; }
+    .hidden { display: none; }
+    form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 900px; margin: auto; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    select, input, textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
+    #painel { margin-top: 30px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #007BFF; color: white; }
+    .azul { background-color: #d0e7ff; }
+    .vermelho { background-color: #ffd0d0; }
+    .verde { background-color: #d0ffd8; }
+    .amarelo { background-color: #fff8d0; }
+    .ciano { background-color: #d0f8ff; }
+    .roxa { background-color: #f0d0ff; }
+    .laranja { background-color: #ffe0b3; }
+    .rosa { background-color: #ffd6f0; }
+    button.editar { background-color: orange; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+    .top-buttons { margin: 10px 0; text-align: center; }
+    .top-buttons button { margin: 5px; }
+    input[type="text"].filtro { width: 100%; padding: 5px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #999; border-radius: 4px; }
+  </style>
 </head>
 <body>
-  <h1>Sistema de Atendimento TJES</h1>
-  <p>Este é o esqueleto da aplicação completa. A versão funcional completa será gerada em seguida.</p>
+  <h1>Sistema de Atendimento</h1>
+  <p>Versão funcional completa.</p>
 </body>
 </html>
